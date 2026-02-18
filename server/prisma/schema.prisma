@@ -6,9 +6,19 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Client {
+  id          String    @id     @default(uuid())
+  nome        String
+  cpf         String    @unique
+  telefone1   String
+  telefone2   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
