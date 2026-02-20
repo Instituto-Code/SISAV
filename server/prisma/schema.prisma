@@ -13,10 +13,35 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+  OWNER
+  EMPLOYEE
+}
+model Oficina {
+  id          String    @id     @default(uuid())
+  nome        String
+  cnpj        String    @unique
+  users       User[]
+  clients     Client[]
+  telefone1   String
+  endereco    String
+  email       String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 model User {
   id          String    @id     @default (uuid())
   nome        String
   email       String    @unique
+  senha       String
+  role        Role      @default(EMPLOYEE)
+  telefone    String
+  ativo       Boolean   @default(true)
+  oficinaId   String
+  company     Oficina   @relation(fields: [oficinaId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Client {
@@ -25,6 +50,8 @@ model Client {
   cpf         String    @unique
   telefone1   String
   telefone2   String?
+  oficinaId   String
+  company     Oficina   @relation(fields: [oficinaId], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }

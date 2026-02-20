@@ -30,6 +30,7 @@ export type ClientMinAggregateOutputType = {
   cpf: string | null
   telefone1: string | null
   telefone2: string | null
+  oficinaId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -40,6 +41,7 @@ export type ClientMaxAggregateOutputType = {
   cpf: string | null
   telefone1: string | null
   telefone2: string | null
+  oficinaId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -50,6 +52,7 @@ export type ClientCountAggregateOutputType = {
   cpf: number
   telefone1: number
   telefone2: number
+  oficinaId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -62,6 +65,7 @@ export type ClientMinAggregateInputType = {
   cpf?: true
   telefone1?: true
   telefone2?: true
+  oficinaId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -72,6 +76,7 @@ export type ClientMaxAggregateInputType = {
   cpf?: true
   telefone1?: true
   telefone2?: true
+  oficinaId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +87,7 @@ export type ClientCountAggregateInputType = {
   cpf?: true
   telefone1?: true
   telefone2?: true
+  oficinaId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -165,6 +171,7 @@ export type ClientGroupByOutputType = {
   cpf: string
   telefone1: string
   telefone2: string | null
+  oficinaId: string
   createdAt: Date
   updatedAt: Date
   _count: ClientCountAggregateOutputType | null
@@ -196,8 +203,10 @@ export type ClientWhereInput = {
   cpf?: Prisma.StringFilter<"Client"> | string
   telefone1?: Prisma.StringFilter<"Client"> | string
   telefone2?: Prisma.StringNullableFilter<"Client"> | string | null
+  oficinaId?: Prisma.StringFilter<"Client"> | string
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
+  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }
 
 export type ClientOrderByWithRelationInput = {
@@ -206,8 +215,10 @@ export type ClientOrderByWithRelationInput = {
   cpf?: Prisma.SortOrder
   telefone1?: Prisma.SortOrder
   telefone2?: Prisma.SortOrderInput | Prisma.SortOrder
+  oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  company?: Prisma.OficinaOrderByWithRelationInput
 }
 
 export type ClientWhereUniqueInput = Prisma.AtLeast<{
@@ -219,8 +230,10 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   nome?: Prisma.StringFilter<"Client"> | string
   telefone1?: Prisma.StringFilter<"Client"> | string
   telefone2?: Prisma.StringNullableFilter<"Client"> | string | null
+  oficinaId?: Prisma.StringFilter<"Client"> | string
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
+  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }, "id" | "cpf">
 
 export type ClientOrderByWithAggregationInput = {
@@ -229,6 +242,7 @@ export type ClientOrderByWithAggregationInput = {
   cpf?: Prisma.SortOrder
   telefone1?: Prisma.SortOrder
   telefone2?: Prisma.SortOrderInput | Prisma.SortOrder
+  oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ClientCountOrderByAggregateInput
@@ -245,6 +259,7 @@ export type ClientScalarWhereWithAggregatesInput = {
   cpf?: Prisma.StringWithAggregatesFilter<"Client"> | string
   telefone1?: Prisma.StringWithAggregatesFilter<"Client"> | string
   telefone2?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  oficinaId?: Prisma.StringWithAggregatesFilter<"Client"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Client"> | Date | string
 }
@@ -257,6 +272,7 @@ export type ClientCreateInput = {
   telefone2?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  company: Prisma.OficinaCreateNestedOneWithoutClientsInput
 }
 
 export type ClientUncheckedCreateInput = {
@@ -265,6 +281,7 @@ export type ClientUncheckedCreateInput = {
   cpf: string
   telefone1: string
   telefone2?: string | null
+  oficinaId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -277,6 +294,7 @@ export type ClientUpdateInput = {
   telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.OficinaUpdateOneRequiredWithoutClientsNestedInput
 }
 
 export type ClientUncheckedUpdateInput = {
@@ -285,6 +303,7 @@ export type ClientUncheckedUpdateInput = {
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
   telefone1?: Prisma.StringFieldUpdateOperationsInput | string
   telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  oficinaId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -295,6 +314,7 @@ export type ClientCreateManyInput = {
   cpf: string
   telefone1: string
   telefone2?: string | null
+  oficinaId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -315,8 +335,19 @@ export type ClientUncheckedUpdateManyInput = {
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
   telefone1?: Prisma.StringFieldUpdateOperationsInput | string
   telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  oficinaId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ClientListRelationFilter = {
+  every?: Prisma.ClientWhereInput
+  some?: Prisma.ClientWhereInput
+  none?: Prisma.ClientWhereInput
+}
+
+export type ClientOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ClientCountOrderByAggregateInput = {
@@ -325,6 +356,7 @@ export type ClientCountOrderByAggregateInput = {
   cpf?: Prisma.SortOrder
   telefone1?: Prisma.SortOrder
   telefone2?: Prisma.SortOrder
+  oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -335,6 +367,7 @@ export type ClientMaxOrderByAggregateInput = {
   cpf?: Prisma.SortOrder
   telefone1?: Prisma.SortOrder
   telefone2?: Prisma.SortOrder
+  oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -345,20 +378,155 @@ export type ClientMinOrderByAggregateInput = {
   cpf?: Prisma.SortOrder
   telefone1?: Prisma.SortOrder
   telefone2?: Prisma.SortOrder
+  oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type ClientCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+}
+
+export type ClientUncheckedCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+}
+
+export type ClientUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+  set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutCompanyInput | Prisma.ClientUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
+}
+
+export type ClientUncheckedUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+  set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutCompanyInput | Prisma.ClientUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type ClientCreateWithoutCompanyInput = {
+  id?: string
+  nome: string
+  cpf: string
+  telefone1: string
+  telefone2?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ClientUncheckedCreateWithoutCompanyInput = {
+  id?: string
+  nome: string
+  cpf: string
+  telefone1: string
+  telefone2?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ClientCreateOrConnectWithoutCompanyInput = {
+  where: Prisma.ClientWhereUniqueInput
+  create: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput>
+}
+
+export type ClientCreateManyCompanyInputEnvelope = {
+  data: Prisma.ClientCreateManyCompanyInput | Prisma.ClientCreateManyCompanyInput[]
+  skipDuplicates?: boolean
+}
+
+export type ClientUpsertWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.ClientWhereUniqueInput
+  update: Prisma.XOR<Prisma.ClientUpdateWithoutCompanyInput, Prisma.ClientUncheckedUpdateWithoutCompanyInput>
+  create: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput>
+}
+
+export type ClientUpdateWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.ClientWhereUniqueInput
+  data: Prisma.XOR<Prisma.ClientUpdateWithoutCompanyInput, Prisma.ClientUncheckedUpdateWithoutCompanyInput>
+}
+
+export type ClientUpdateManyWithWhereWithoutCompanyInput = {
+  where: Prisma.ClientScalarWhereInput
+  data: Prisma.XOR<Prisma.ClientUpdateManyMutationInput, Prisma.ClientUncheckedUpdateManyWithoutCompanyInput>
+}
+
+export type ClientScalarWhereInput = {
+  AND?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
+  OR?: Prisma.ClientScalarWhereInput[]
+  NOT?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
+  id?: Prisma.StringFilter<"Client"> | string
+  nome?: Prisma.StringFilter<"Client"> | string
+  cpf?: Prisma.StringFilter<"Client"> | string
+  telefone1?: Prisma.StringFilter<"Client"> | string
+  telefone2?: Prisma.StringNullableFilter<"Client"> | string | null
+  oficinaId?: Prisma.StringFilter<"Client"> | string
+  createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
+}
+
+export type ClientCreateManyCompanyInput = {
+  id?: string
+  nome: string
+  cpf: string
+  telefone1: string
+  telefone2?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ClientUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone1?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ClientUncheckedUpdateWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone1?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ClientUncheckedUpdateManyWithoutCompanyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone1?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -369,8 +537,10 @@ export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   cpf?: boolean
   telefone1?: boolean
   telefone2?: boolean
+  oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -379,8 +549,10 @@ export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   cpf?: boolean
   telefone1?: boolean
   telefone2?: boolean
+  oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -389,8 +561,10 @@ export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   cpf?: boolean
   telefone1?: boolean
   telefone2?: boolean
+  oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectScalar = {
@@ -399,21 +573,34 @@ export type ClientSelectScalar = {
   cpf?: boolean
   telefone1?: boolean
   telefone2?: boolean
+  oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cpf" | "telefone1" | "telefone2" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
+export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cpf" | "telefone1" | "telefone2" | "oficinaId" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
+export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+}
+export type ClientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+}
+export type ClientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+}
 
 export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Client"
-  objects: {}
+  objects: {
+    company: Prisma.$OficinaPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     nome: string
     cpf: string
     telefone1: string
     telefone2: string | null
+    oficinaId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["client"]>
@@ -810,6 +997,7 @@ readonly fields: ClientFieldRefs;
  */
 export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  company<T extends Prisma.OficinaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OficinaDefaultArgs<ExtArgs>>): Prisma.Prisma__OficinaClient<runtime.Types.Result.GetResult<Prisma.$OficinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -844,6 +1032,7 @@ export interface ClientFieldRefs {
   readonly cpf: Prisma.FieldRef<"Client", 'String'>
   readonly telefone1: Prisma.FieldRef<"Client", 'String'>
   readonly telefone2: Prisma.FieldRef<"Client", 'String'>
+  readonly oficinaId: Prisma.FieldRef<"Client", 'String'>
   readonly createdAt: Prisma.FieldRef<"Client", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Client", 'DateTime'>
 }
@@ -863,6 +1052,10 @@ export type ClientFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  /**
    * Filter, which Client to fetch.
    */
   where: Prisma.ClientWhereUniqueInput
@@ -881,6 +1074,10 @@ export type ClientFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  /**
    * Filter, which Client to fetch.
    */
   where: Prisma.ClientWhereUniqueInput
@@ -898,6 +1095,10 @@ export type ClientFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Client
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
   /**
    * Filter, which Client to fetch.
    */
@@ -947,6 +1148,10 @@ export type ClientFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  /**
    * Filter, which Client to fetch.
    */
   where?: Prisma.ClientWhereInput
@@ -995,6 +1200,10 @@ export type ClientFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  /**
    * Filter, which Clients to fetch.
    */
   where?: Prisma.ClientWhereInput
@@ -1038,6 +1247,10 @@ export type ClientCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
+  /**
    * The data needed to create a Client.
    */
   data: Prisma.XOR<Prisma.ClientCreateInput, Prisma.ClientUncheckedCreateInput>
@@ -1071,6 +1284,10 @@ export type ClientCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensio
    */
   data: Prisma.ClientCreateManyInput | Prisma.ClientCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1085,6 +1302,10 @@ export type ClientUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Client
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
   /**
    * The data needed to update a Client.
    */
@@ -1137,6 +1358,10 @@ export type ClientUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensio
    * Limit how many Clients to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1151,6 +1376,10 @@ export type ClientUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Client
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
   /**
    * The filter to search for the Client to update in case it exists.
    */
@@ -1177,6 +1406,10 @@ export type ClientDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Client
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
   /**
    * Filter which Client to delete.
    */
@@ -1209,4 +1442,8 @@ export type ClientDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Client
    */
   omit?: Prisma.ClientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientInclude<ExtArgs> | null
 }
