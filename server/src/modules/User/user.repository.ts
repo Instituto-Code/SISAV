@@ -1,5 +1,5 @@
-import { prisma } from "../../common/infra/lib/prisma";
-import { Prisma } from "../../generated/prisma/client";
+import { prisma } from "../../common/infra/lib/prisma.js";
+import { Prisma } from "@prisma/client";
 
 export const UserRepository = {
 

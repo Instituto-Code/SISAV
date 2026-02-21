@@ -1,15 +1,15 @@
-import { AppError } from "../../../common/domain/errors/app-errors";
-import { generateToken } from "../../../common/infra/auth/jwt/jwt";
-import { prisma } from "../../../common/infra/lib/prisma";
-import { DTORegisterUser } from "../../../common/shared/dto/user.dto";
-import { OficinaRepository } from "../../Oficina/oficina.repository";
-import { UserRepository } from "../user.repository";
+import { AppError } from "../../../common/domain/errors/app-errors.js";
+import { generateToken } from "../../../common/infra/auth/jwt/jwt.js";
+import { prisma } from "../../../common/infra/lib/prisma.js";
+import { DTORegisterUser } from "../../../common/shared/dto/user.dto.js";
+import { OficinaRepository } from "../../Oficina/oficina.repository.js";
+import { UserRepository } from "../user.repository.js";
 import bcrypt from "bcrypt";
 
 // Registro do usuário
 export async function createUserService(data: DTORegisterUser) {
 
-    return prisma.$transaction(async (tx) => {
+    return prisma.$transaction(async (tx: any) => {
         const emailExists = await UserRepository.findByEmail(data.email, tx);
 
         if (emailExists) {
