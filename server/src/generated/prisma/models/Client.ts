@@ -206,7 +206,7 @@ export type ClientWhereInput = {
   oficinaId?: Prisma.StringFilter<"Client"> | string
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
-  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
+  oficina?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }
 
 export type ClientOrderByWithRelationInput = {
@@ -218,7 +218,7 @@ export type ClientOrderByWithRelationInput = {
   oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  company?: Prisma.OficinaOrderByWithRelationInput
+  oficina?: Prisma.OficinaOrderByWithRelationInput
 }
 
 export type ClientWhereUniqueInput = Prisma.AtLeast<{
@@ -233,7 +233,7 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   oficinaId?: Prisma.StringFilter<"Client"> | string
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
-  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
+  oficina?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }, "id" | "cpf">
 
 export type ClientOrderByWithAggregationInput = {
@@ -272,7 +272,7 @@ export type ClientCreateInput = {
   telefone2?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.OficinaCreateNestedOneWithoutClientsInput
+  oficina: Prisma.OficinaCreateNestedOneWithoutClientsInput
 }
 
 export type ClientUncheckedCreateInput = {
@@ -294,7 +294,7 @@ export type ClientUpdateInput = {
   telefone2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.OficinaUpdateOneRequiredWithoutClientsNestedInput
+  oficina?: Prisma.OficinaUpdateOneRequiredWithoutClientsNestedInput
 }
 
 export type ClientUncheckedUpdateInput = {
@@ -383,45 +383,45 @@ export type ClientMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ClientCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+export type ClientCreateNestedManyWithoutOficinaInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput> | Prisma.ClientCreateWithoutOficinaInput[] | Prisma.ClientUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutOficinaInput | Prisma.ClientCreateOrConnectWithoutOficinaInput[]
+  createMany?: Prisma.ClientCreateManyOficinaInputEnvelope
   connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
 }
 
-export type ClientUncheckedCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+export type ClientUncheckedCreateNestedManyWithoutOficinaInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput> | Prisma.ClientCreateWithoutOficinaInput[] | Prisma.ClientUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutOficinaInput | Prisma.ClientCreateOrConnectWithoutOficinaInput[]
+  createMany?: Prisma.ClientCreateManyOficinaInputEnvelope
   connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
 }
 
-export type ClientUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+export type ClientUpdateManyWithoutOficinaNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput> | Prisma.ClientCreateWithoutOficinaInput[] | Prisma.ClientUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutOficinaInput | Prisma.ClientCreateOrConnectWithoutOficinaInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutOficinaInput | Prisma.ClientUpsertWithWhereUniqueWithoutOficinaInput[]
+  createMany?: Prisma.ClientCreateManyOficinaInputEnvelope
   set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
-  update?: Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutCompanyInput | Prisma.ClientUpdateManyWithWhereWithoutCompanyInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutOficinaInput | Prisma.ClientUpdateWithWhereUniqueWithoutOficinaInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutOficinaInput | Prisma.ClientUpdateManyWithWhereWithoutOficinaInput[]
   deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
 }
 
-export type ClientUncheckedUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput> | Prisma.ClientCreateWithoutCompanyInput[] | Prisma.ClientUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutCompanyInput | Prisma.ClientCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.ClientCreateManyCompanyInputEnvelope
+export type ClientUncheckedUpdateManyWithoutOficinaNestedInput = {
+  create?: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput> | Prisma.ClientCreateWithoutOficinaInput[] | Prisma.ClientUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.ClientCreateOrConnectWithoutOficinaInput | Prisma.ClientCreateOrConnectWithoutOficinaInput[]
+  upsert?: Prisma.ClientUpsertWithWhereUniqueWithoutOficinaInput | Prisma.ClientUpsertWithWhereUniqueWithoutOficinaInput[]
+  createMany?: Prisma.ClientCreateManyOficinaInputEnvelope
   set?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   disconnect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   delete?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
   connect?: Prisma.ClientWhereUniqueInput | Prisma.ClientWhereUniqueInput[]
-  update?: Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput | Prisma.ClientUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutCompanyInput | Prisma.ClientUpdateManyWithWhereWithoutCompanyInput[]
+  update?: Prisma.ClientUpdateWithWhereUniqueWithoutOficinaInput | Prisma.ClientUpdateWithWhereUniqueWithoutOficinaInput[]
+  updateMany?: Prisma.ClientUpdateManyWithWhereWithoutOficinaInput | Prisma.ClientUpdateManyWithWhereWithoutOficinaInput[]
   deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
 }
 
@@ -429,7 +429,7 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type ClientCreateWithoutCompanyInput = {
+export type ClientCreateWithoutOficinaInput = {
   id?: string
   nome: string
   cpf: string
@@ -439,7 +439,7 @@ export type ClientCreateWithoutCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type ClientUncheckedCreateWithoutCompanyInput = {
+export type ClientUncheckedCreateWithoutOficinaInput = {
   id?: string
   nome: string
   cpf: string
@@ -449,30 +449,30 @@ export type ClientUncheckedCreateWithoutCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type ClientCreateOrConnectWithoutCompanyInput = {
+export type ClientCreateOrConnectWithoutOficinaInput = {
   where: Prisma.ClientWhereUniqueInput
-  create: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput>
+  create: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput>
 }
 
-export type ClientCreateManyCompanyInputEnvelope = {
-  data: Prisma.ClientCreateManyCompanyInput | Prisma.ClientCreateManyCompanyInput[]
+export type ClientCreateManyOficinaInputEnvelope = {
+  data: Prisma.ClientCreateManyOficinaInput | Prisma.ClientCreateManyOficinaInput[]
   skipDuplicates?: boolean
 }
 
-export type ClientUpsertWithWhereUniqueWithoutCompanyInput = {
+export type ClientUpsertWithWhereUniqueWithoutOficinaInput = {
   where: Prisma.ClientWhereUniqueInput
-  update: Prisma.XOR<Prisma.ClientUpdateWithoutCompanyInput, Prisma.ClientUncheckedUpdateWithoutCompanyInput>
-  create: Prisma.XOR<Prisma.ClientCreateWithoutCompanyInput, Prisma.ClientUncheckedCreateWithoutCompanyInput>
+  update: Prisma.XOR<Prisma.ClientUpdateWithoutOficinaInput, Prisma.ClientUncheckedUpdateWithoutOficinaInput>
+  create: Prisma.XOR<Prisma.ClientCreateWithoutOficinaInput, Prisma.ClientUncheckedCreateWithoutOficinaInput>
 }
 
-export type ClientUpdateWithWhereUniqueWithoutCompanyInput = {
+export type ClientUpdateWithWhereUniqueWithoutOficinaInput = {
   where: Prisma.ClientWhereUniqueInput
-  data: Prisma.XOR<Prisma.ClientUpdateWithoutCompanyInput, Prisma.ClientUncheckedUpdateWithoutCompanyInput>
+  data: Prisma.XOR<Prisma.ClientUpdateWithoutOficinaInput, Prisma.ClientUncheckedUpdateWithoutOficinaInput>
 }
 
-export type ClientUpdateManyWithWhereWithoutCompanyInput = {
+export type ClientUpdateManyWithWhereWithoutOficinaInput = {
   where: Prisma.ClientScalarWhereInput
-  data: Prisma.XOR<Prisma.ClientUpdateManyMutationInput, Prisma.ClientUncheckedUpdateManyWithoutCompanyInput>
+  data: Prisma.XOR<Prisma.ClientUpdateManyMutationInput, Prisma.ClientUncheckedUpdateManyWithoutOficinaInput>
 }
 
 export type ClientScalarWhereInput = {
@@ -489,7 +489,7 @@ export type ClientScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
 }
 
-export type ClientCreateManyCompanyInput = {
+export type ClientCreateManyOficinaInput = {
   id?: string
   nome: string
   cpf: string
@@ -499,7 +499,7 @@ export type ClientCreateManyCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type ClientUpdateWithoutCompanyInput = {
+export type ClientUpdateWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -509,7 +509,7 @@ export type ClientUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ClientUncheckedUpdateWithoutCompanyInput = {
+export type ClientUncheckedUpdateWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -519,7 +519,7 @@ export type ClientUncheckedUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ClientUncheckedUpdateManyWithoutCompanyInput = {
+export type ClientUncheckedUpdateManyWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   cpf?: Prisma.StringFieldUpdateOperationsInput | string
@@ -540,7 +540,7 @@ export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -552,7 +552,7 @@ export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -564,7 +564,7 @@ export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["client"]>
 
 export type ClientSelectScalar = {
@@ -580,19 +580,19 @@ export type ClientSelectScalar = {
 
 export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cpf" | "telefone1" | "telefone2" | "oficinaId" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
 export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 export type ClientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 export type ClientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 
 export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Client"
   objects: {
-    company: Prisma.$OficinaPayload<ExtArgs>
+    oficina: Prisma.$OficinaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -997,7 +997,7 @@ readonly fields: ClientFieldRefs;
  */
 export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  company<T extends Prisma.OficinaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OficinaDefaultArgs<ExtArgs>>): Prisma.Prisma__OficinaClient<runtime.Types.Result.GetResult<Prisma.$OficinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  oficina<T extends Prisma.OficinaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OficinaDefaultArgs<ExtArgs>>): Prisma.Prisma__OficinaClient<runtime.Types.Result.GetResult<Prisma.$OficinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

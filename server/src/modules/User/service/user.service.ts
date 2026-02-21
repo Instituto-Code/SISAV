@@ -1,16 +1,18 @@
 import { AppError } from "../../../common/domain/errors/app-errors";
+import { generateToken } from "../../../common/infra/auth/jwt/jwt";
 import { prisma } from "../../../common/infra/lib/prisma";
 import { DTORegisterUser } from "../../../common/shared/dto/user.dto";
 import { OficinaRepository } from "../../Oficina/oficina.repository";
 import { UserRepository } from "../user.repository";
 import bcrypt from "bcrypt";
 
-export async function createUser(data: DTORegisterUser) {
+// Registro do usuário
+export async function createUserService(data: DTORegisterUser) {
 
     return prisma.$transaction(async (tx) => {
         const emailExists = await UserRepository.findByEmail(data.email, tx);
 
-        if(emailExists) {
+        if (emailExists) {
             throw new AppError("Email já cadastrado.", 400);
         }
 
@@ -38,5 +40,28 @@ export async function createUser(data: DTORegisterUser) {
 
         return { user, oficina }
     })
-
 }
+
+// Login do usuário
+export async function loginUserService(email: string, senha: string) {
+
+    
+        const userExist = await UserRepository.findByEmail(email);
+
+        if (!userExist) {
+            throw new AppError("Usuário não encontrado", 404);
+        }
+
+        if(!(await bcrypt.compare(senha, userExist.senha))){
+            throw new AppError("Senha incorreta", 400); 
+        }
+
+        const token = generateToken(userExist.id);
+
+        return {
+            id: userExist.id,
+            token: token
+        }
+    
+}
+

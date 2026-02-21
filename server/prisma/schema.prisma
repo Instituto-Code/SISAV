@@ -51,7 +51,7 @@ model Client {
   telefone1   String
   telefone2   String?
   oficinaId   String
-  company     Oficina   @relation(fields: [oficinaId], references: [id])
+  oficina     Oficina   @relation(fields: [oficinaId], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }

@@ -16,9 +16,10 @@ export const UserRepository = {
     //Busca de usuário por ID
     async findById(
         id: string,
-        tx: Prisma.TransactionClient
+        tx?: Prisma.TransactionClient
     ) {
-        return tx.user.findUnique({
+        const client = tx ?? prisma;
+        return client.user.findUnique({
             where: { id }
         })
     },
@@ -26,9 +27,11 @@ export const UserRepository = {
     //Busca de usuário por email
     async findByEmail(
         email: string,
-        tx: Prisma.TransactionClient
+        tx?: Prisma.TransactionClient
     ) {
-        return tx.user.findUnique({
+
+        const client = tx ?? prisma;
+        return client.user.findUnique({
             where: { email }
         })
     }
