@@ -222,7 +222,7 @@ export type UserWhereInput = {
   oficinaId?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
+  oficina?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }
 
 export type UserOrderByWithRelationInput = {
@@ -236,7 +236,7 @@ export type UserOrderByWithRelationInput = {
   oficinaId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  company?: Prisma.OficinaOrderByWithRelationInput
+  oficina?: Prisma.OficinaOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -253,7 +253,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   oficinaId?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  company?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
+  oficina?: Prisma.XOR<Prisma.OficinaScalarRelationFilter, Prisma.OficinaWhereInput>
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -298,7 +298,7 @@ export type UserCreateInput = {
   ativo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  company: Prisma.OficinaCreateNestedOneWithoutUsersInput
+  oficina: Prisma.OficinaCreateNestedOneWithoutUsersInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -324,7 +324,7 @@ export type UserUpdateInput = {
   ativo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  company?: Prisma.OficinaUpdateOneRequiredWithoutUsersNestedInput
+  oficina?: Prisma.OficinaUpdateOneRequiredWithoutUsersNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -427,45 +427,45 @@ export type UserMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type UserCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput> | Prisma.UserCreateWithoutCompanyInput[] | Prisma.UserUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput | Prisma.UserCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.UserCreateManyCompanyInputEnvelope
+export type UserCreateNestedManyWithoutOficinaInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput> | Prisma.UserCreateWithoutOficinaInput[] | Prisma.UserUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOficinaInput | Prisma.UserCreateOrConnectWithoutOficinaInput[]
+  createMany?: Prisma.UserCreateManyOficinaInputEnvelope
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUncheckedCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput> | Prisma.UserCreateWithoutCompanyInput[] | Prisma.UserUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput | Prisma.UserCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.UserCreateManyCompanyInputEnvelope
+export type UserUncheckedCreateNestedManyWithoutOficinaInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput> | Prisma.UserCreateWithoutOficinaInput[] | Prisma.UserUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOficinaInput | Prisma.UserCreateOrConnectWithoutOficinaInput[]
+  createMany?: Prisma.UserCreateManyOficinaInputEnvelope
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput> | Prisma.UserCreateWithoutCompanyInput[] | Prisma.UserUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput | Prisma.UserCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCompanyInput | Prisma.UserUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.UserCreateManyCompanyInputEnvelope
+export type UserUpdateManyWithoutOficinaNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput> | Prisma.UserCreateWithoutOficinaInput[] | Prisma.UserUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOficinaInput | Prisma.UserCreateOrConnectWithoutOficinaInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutOficinaInput | Prisma.UserUpsertWithWhereUniqueWithoutOficinaInput[]
+  createMany?: Prisma.UserCreateManyOficinaInputEnvelope
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutCompanyInput | Prisma.UserUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCompanyInput | Prisma.UserUpdateManyWithWhereWithoutCompanyInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutOficinaInput | Prisma.UserUpdateWithWhereUniqueWithoutOficinaInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutOficinaInput | Prisma.UserUpdateManyWithWhereWithoutOficinaInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUncheckedUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput> | Prisma.UserCreateWithoutCompanyInput[] | Prisma.UserUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCompanyInput | Prisma.UserCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCompanyInput | Prisma.UserUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.UserCreateManyCompanyInputEnvelope
+export type UserUncheckedUpdateManyWithoutOficinaNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput> | Prisma.UserCreateWithoutOficinaInput[] | Prisma.UserUncheckedCreateWithoutOficinaInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOficinaInput | Prisma.UserCreateOrConnectWithoutOficinaInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutOficinaInput | Prisma.UserUpsertWithWhereUniqueWithoutOficinaInput[]
+  createMany?: Prisma.UserCreateManyOficinaInputEnvelope
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutCompanyInput | Prisma.UserUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCompanyInput | Prisma.UserUpdateManyWithWhereWithoutCompanyInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutOficinaInput | Prisma.UserUpdateWithWhereUniqueWithoutOficinaInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutOficinaInput | Prisma.UserUpdateManyWithWhereWithoutOficinaInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
@@ -477,7 +477,7 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type UserCreateWithoutCompanyInput = {
+export type UserCreateWithoutOficinaInput = {
   id?: string
   nome: string
   email: string
@@ -489,7 +489,7 @@ export type UserCreateWithoutCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type UserUncheckedCreateWithoutCompanyInput = {
+export type UserUncheckedCreateWithoutOficinaInput = {
   id?: string
   nome: string
   email: string
@@ -501,30 +501,30 @@ export type UserUncheckedCreateWithoutCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type UserCreateOrConnectWithoutCompanyInput = {
+export type UserCreateOrConnectWithoutOficinaInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput>
 }
 
-export type UserCreateManyCompanyInputEnvelope = {
-  data: Prisma.UserCreateManyCompanyInput | Prisma.UserCreateManyCompanyInput[]
+export type UserCreateManyOficinaInputEnvelope = {
+  data: Prisma.UserCreateManyOficinaInput | Prisma.UserCreateManyOficinaInput[]
   skipDuplicates?: boolean
 }
 
-export type UserUpsertWithWhereUniqueWithoutCompanyInput = {
+export type UserUpsertWithWhereUniqueWithoutOficinaInput = {
   where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCompanyInput, Prisma.UserUncheckedUpdateWithoutCompanyInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCompanyInput, Prisma.UserUncheckedCreateWithoutCompanyInput>
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOficinaInput, Prisma.UserUncheckedUpdateWithoutOficinaInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOficinaInput, Prisma.UserUncheckedCreateWithoutOficinaInput>
 }
 
-export type UserUpdateWithWhereUniqueWithoutCompanyInput = {
+export type UserUpdateWithWhereUniqueWithoutOficinaInput = {
   where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCompanyInput, Prisma.UserUncheckedUpdateWithoutCompanyInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOficinaInput, Prisma.UserUncheckedUpdateWithoutOficinaInput>
 }
 
-export type UserUpdateManyWithWhereWithoutCompanyInput = {
+export type UserUpdateManyWithWhereWithoutOficinaInput = {
   where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutCompanyInput>
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutOficinaInput>
 }
 
 export type UserScalarWhereInput = {
@@ -543,7 +543,7 @@ export type UserScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
 }
 
-export type UserCreateManyCompanyInput = {
+export type UserCreateManyOficinaInput = {
   id?: string
   nome: string
   email: string
@@ -555,7 +555,7 @@ export type UserCreateManyCompanyInput = {
   updatedAt?: Date | string
 }
 
-export type UserUpdateWithoutCompanyInput = {
+export type UserUpdateWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -567,7 +567,7 @@ export type UserUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type UserUncheckedUpdateWithoutCompanyInput = {
+export type UserUncheckedUpdateWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -579,7 +579,7 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type UserUncheckedUpdateManyWithoutCompanyInput = {
+export type UserUncheckedUpdateManyWithoutOficinaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -604,7 +604,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -618,7 +618,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -632,7 +632,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   oficinaId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -650,19 +650,19 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "email" | "senha" | "role" | "telefone" | "ativo" | "oficinaId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  company?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
+  oficina?: boolean | Prisma.OficinaDefaultArgs<ExtArgs>
 }
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    company: Prisma.$OficinaPayload<ExtArgs>
+    oficina: Prisma.$OficinaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1069,7 +1069,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  company<T extends Prisma.OficinaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OficinaDefaultArgs<ExtArgs>>): Prisma.Prisma__OficinaClient<runtime.Types.Result.GetResult<Prisma.$OficinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  oficina<T extends Prisma.OficinaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OficinaDefaultArgs<ExtArgs>>): Prisma.Prisma__OficinaClient<runtime.Types.Result.GetResult<Prisma.$OficinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

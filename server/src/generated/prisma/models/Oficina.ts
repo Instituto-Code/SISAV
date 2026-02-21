@@ -276,7 +276,7 @@ export type OficinaCreateInput = {
   email: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutOficinaInput
   clients?: Prisma.ClientCreateNestedManyWithoutCompanyInput
 }
 
@@ -289,7 +289,7 @@ export type OficinaUncheckedCreateInput = {
   email: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOficinaInput
   clients?: Prisma.ClientUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -302,7 +302,7 @@ export type OficinaUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutOficinaNestedInput
   clients?: Prisma.ClientUpdateManyWithoutCompanyNestedInput
 }
 
@@ -315,7 +315,7 @@ export type OficinaUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOficinaNestedInput
   clients?: Prisma.ClientUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -499,7 +499,7 @@ export type OficinaCreateWithoutClientsInput = {
   email: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserCreateNestedManyWithoutOficinaInput
 }
 
 export type OficinaUncheckedCreateWithoutClientsInput = {
@@ -511,7 +511,7 @@ export type OficinaUncheckedCreateWithoutClientsInput = {
   email: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutCompanyInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutOficinaInput
 }
 
 export type OficinaCreateOrConnectWithoutClientsInput = {
@@ -539,7 +539,7 @@ export type OficinaUpdateWithoutClientsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUpdateManyWithoutOficinaNestedInput
 }
 
 export type OficinaUncheckedUpdateWithoutClientsInput = {
@@ -551,7 +551,7 @@ export type OficinaUncheckedUpdateWithoutClientsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  users?: Prisma.UserUncheckedUpdateManyWithoutCompanyNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutOficinaNestedInput
 }
 
 

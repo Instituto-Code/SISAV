@@ -39,7 +39,7 @@ model User {
   telefone    String
   ativo       Boolean   @default(true)
   oficinaId   String
-  company     Oficina   @relation(fields: [oficinaId], references: [id])
+  oficina     Oficina   @relation(fields: [oficinaId], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
