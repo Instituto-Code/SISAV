@@ -18,7 +18,12 @@ const userRouter = Router();
  *               - nome
  *               - email
  *               - senha
+ *               - telefone
  *               - nomeOficina
+ *               - emailOficina
+ *               - cnpj
+ *               - endereco
+ *               - telefone1
  *             properties:
  *               nome:
  *                 type: string
@@ -27,6 +32,14 @@ const userRouter = Router();
  *               senha:
  *                 type: string
  *               nomeOficina:
+ *                 type: string
+ *               emailOficina:
+ *                 type: string
+ *               cnpj:
+ *                 type: string
+ *               endereco:
+ *                 type: string
+ *               telefone1:
  *                 type: string
  *     responses:
  *       201:
