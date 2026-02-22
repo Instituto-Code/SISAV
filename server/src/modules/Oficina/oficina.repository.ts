@@ -1,4 +1,5 @@
-import { Prisma } from "@prisma/client"
+import { Prisma } from "@prisma/client";
+import { prisma } from "../../common/infra/lib/prisma.js";
 
 export const OficinaRepository = {
 
@@ -8,6 +9,12 @@ export const OficinaRepository = {
     ) {
         return tx.oficina.create({
             data
+        })
+    },
+
+    async findById(id: string){
+        return prisma.oficina.findUnique({
+            where: { id }
         })
     }
 

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-import { AppError } from "../../../domain/errors/app-errors";
-import { prisma } from "../../lib/prisma";
+import { AppError } from "../../../domain/errors/app-errors.js";
+import { prisma } from "../../lib/prisma.js";
 
 export interface CustomRequest extends Request {
     user?: any

@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { createUserController, loginUserController } from "./user.controller.js";
+import { createUserController, getProfileUserController, loginUserController } from "./user.controller.js";
+import { authGuard } from "../../common/infra/auth/authMiddleware/authGuard.js";
 const userRouter = Router();
 
 /**
@@ -76,6 +77,22 @@ userRouter.post("/register", createUserController);
  *         description: Usuário não encontrado
  */
 userRouter.post("/login", loginUserController);
+
+/**
+ * @swagger
+ * /user/profile:
+ *   get:
+ *     summary: Obter perfil do usuário logado
+ *     tags: [User]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Perfil do usuário retornado com sucesso
+ *       404:
+ *         description: Usuário não encontrado
+ */
+userRouter.get("/profile", authGuard, getProfileUserController);
 
 
 export default userRouter;

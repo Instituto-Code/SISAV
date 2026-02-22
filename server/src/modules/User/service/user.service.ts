@@ -33,6 +33,7 @@ export async function createUserService(data: DTORegisterUser) {
             email: data.email,
             senha: hashPass,
             telefone: data.telefone,
+            role: "OWNER",
             oficina: {
                 connect: { id: oficina.id }
             }
@@ -45,23 +46,50 @@ export async function createUserService(data: DTORegisterUser) {
 // Login do usuário
 export async function loginUserService(email: string, senha: string) {
 
-    
-        const userExist = await UserRepository.findByEmail(email);
 
-        if (!userExist) {
-            throw new AppError("Usuário não encontrado", 404);
-        }
+    const userExist = await UserRepository.findByEmail(email);
 
-        if(!(await bcrypt.compare(senha, userExist.senha))){
-            throw new AppError("Senha incorreta", 400); 
-        }
+    if (!userExist) {
+        throw new AppError("Usuário não encontrado", 404);
+    }
 
-        const token = generateToken(userExist.id);
+    if (!(await bcrypt.compare(senha, userExist.senha))) {
+        throw new AppError("Senha incorreta", 400);
+    }
 
-        return {
-            id: userExist.id,
-            token: token
-        }
-    
+    const token = generateToken(userExist.id);
+
+    return {
+        id: userExist.id,
+        token: token
+    }
+
 }
 
+// perfil do usuário
+export async function getUserProfileService(userId: string){
+    const user = await UserRepository.findById(userId);
+
+    if(!user) throw new AppError("Usuário não encontrado", 404);
+
+    const userData = {
+        id: user.id,
+        nome: user.nome,
+        email: user.email,
+        telefone: user.telefone,
+        role: user.role,
+        ativo: user.ativo,
+        createdAt: user.createdAt
+    }
+
+    const oficina = await OficinaRepository.findById(user.oficinaId);
+
+    if(!oficina) throw new AppError("Oficina não encontrada", 404);
+
+
+
+    return {
+        userData,
+        oficina
+    }
+}
